@@ -26,15 +26,23 @@ from collections import namedtuple
 
 # TODO: Finish generated file conversion, reenable these extensions
 # THESE FUNCTIONS WILL BE ADDED IN AFTER THE SCRIPT CONVERSION EFFORT IS COMPLETE
-temporary_script_porting_exclusions = ['vkGetPhysicalDeviceFeatures2KHR',
+temporary_script_porting_exclusions = [
+                                       # VK_KHR_get_physical_device_properties2
+                                       'vkGetPhysicalDeviceFeatures2KHR',
                                        'vkGetPhysicalDeviceProperties2KHR',
                                        'vkGetPhysicalDeviceFormatProperties2KHR',
                                        'vkGetPhysicalDeviceImageFormatProperties2KHR',
                                        'vkGetPhysicalDeviceQueueFamilyProperties2KHR',
                                        'vkGetPhysicalDeviceMemoryProperties2KHR',
                                        'vkGetPhysicalDeviceSparseImageFormatProperties2KHR',
+
+                                       # VK_KHR_maintenance1
                                        'vkTrimCommandPoolKHR',
+
+                                       # VK_KHR_push_descriptor
                                        'vkCmdPushDescriptorSetKHR',
+
+                                       # VK_KHX_device_group
                                        'vkGetDeviceGroupPeerMemoryFeaturesKHX',
                                        'vkBindBufferMemory2KHX',
                                        'vkBindImageMemory2KHX',
@@ -44,8 +52,14 @@ temporary_script_porting_exclusions = ['vkGetPhysicalDeviceFeatures2KHR',
                                        'vkAcquireNextImage2KHX',
                                        'vkCmdDispatchBaseKHX',
                                        'vkGetPhysicalDevicePresentRectanglesKHX',
+
+                                       # VK_NN_vi_surface
                                        'vkCreateViSurfaceNN',
+
+                                       # VK_KHX_device_group_creation
                                        'vkEnumeratePhysicalDeviceGroupsKHX',
+
+                                       # VK_NVX_device_generated_commands
                                        'vkCmdProcessCommandsNVX',
                                        'vkCmdReserveSpaceForCommandsNVX',
                                        'vkCreateIndirectCommandsLayoutNVX',
@@ -55,22 +69,46 @@ temporary_script_porting_exclusions = ['vkGetPhysicalDeviceFeatures2KHR',
                                        'vkRegisterObjectsNVX',
                                        'vkUnregisterObjectsNVX',
                                        'vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX',
+
+                                       # VK_NV_clip_space_w_scaling
                                        'vkCmdSetViewportWScalingNV',
+
+                                       # VK_EXT_direct_mode_display
                                        'vkReleaseDisplayEXT',
+
+                                       # VK_EXT_acquire_xlib_display
                                        'vkAcquireXlibDisplayEXT',
                                        'vkGetRandROutputDisplayEXT',
+
+                                       # VK_EXT_display_surface_counter
                                        'vkGetPhysicalDeviceSurfaceCapabilities2EXT',
+
+                                       # VK_EXT_display_control
                                        'vkDisplayPowerControlEXT',
                                        'vkRegisterDeviceEventEXT',
                                        'vkRegisterDisplayEventEXT',
                                        'vkGetSwapchainCounterEXT',
+
+                                       # VK_GOOGLE_display_timing
                                        'vkGetRefreshCycleDurationGOOGLE',
                                        'vkGetPastPresentationTimingGOOGLE',
+
+                                       # VK_EXT_discard_rectangles
                                        'vkCmdSetDiscardRectangleEXT',
+
+                                       # VK_EXT_hdr_metadata
                                        'vkSetHdrMetadataEXT',
+
+                                       # VK_MVK_ios_surface
                                        'vkCreateIOSSurfaceMVK',
+
+                                       # VK_MVK_macos_surface
                                        'vkCreateMacOSSurfaceMVK',
+
+                                       # VK_KHR_shared_presentable_image
                                        'vkGetSwapchainStatusKHR',
+
+                                       # VK_KHR_get_surface_capabilities2
                                        'vkGetPhysicalDeviceSurfaceCapabilities2KHR',
                                        'vkGetPhysicalDeviceSurfaceFormats2KHR',
 
@@ -609,6 +647,8 @@ class VkTraceFileOutputGenerator(OutputGenerator):
                                  'AllocateCommandBuffers',
                                  'GetImageMemoryRequirements',
                                  'GetBufferMemoryRequirements',
+
+                                 # VK_KHR_descriptor_update_template
                                  'CreateDescriptorUpdateTemplateKHR',
                                  'DestroyDescriptorUpdateTemplateKHR',
                                  'UpdateDescriptorSetWithTemplateKHR',
@@ -2277,6 +2317,8 @@ class VkTraceFileOutputGenerator(OutputGenerator):
                                          'vkCreateWin32SurfaceKHR',
                                          'vkGetPhysicalDeviceWin32PresentationSupportKHR',
                                          'vkCreateAndroidSurfaceKHR',
+
+                                         # VK_KHR_descriptor_update_template
                                          'vkCreateDescriptorUpdateTemplateKHR',
                                          'vkDestroyDescriptorUpdateTemplateKHR',
                                          'vkUpdateDescriptorSetWithTemplateKHR',

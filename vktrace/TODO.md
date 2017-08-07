@@ -74,3 +74,45 @@ As you complete an item, please copy / paste it into the SUPPORTED FEATURES sect
 * Editing, adding, removal of API calls
 * Shader editing
 * Hyperlink API Call Tree to state-specific windows
+
+
+**EXTENSION STATUS**
+| Extension Name                         | Status   |
+|----------------------------------------|:--------:|
+| VK_KHR_16bit_storage                   | -        |
+| VK_KHR_bind_memory2                    | ?        |
+| VK_KHR_dedicated_allocation            | -        |
+| VK_KHR_descriptor_update_template      | DONE     |
+| VK_KHX_device_group                    | -        |
+| VK_KHX_device_group_creation           | -        |
+| VK_KHR_external_fence                  | -        |
+| VK_KHR_external_fence_capabilities     | NOT DONE |
+| VK_KHR_external_fence_fd               | NOT DONE |
+| VK_KHR_external_fence_win32            | NOT DONE |
+| VK_KHR_external_memory                 | -        |
+| VK_KHR_external_memory_capabilities    | NOT DONE |
+| VK_KHR_external_memory_fd              | NOT DONE |
+| VK_KHR_external_memory_win32           | NOT DONE |
+| VK_KHR_external_semaphore              | -        |
+| VK_KHR_external_semaphore_capabilities | NOT DONE |
+| VK_KHR_external_semaphore_fd           | NOT DONE |
+| VK_KHR_external_semaphore_win32        | NOT DONE |
+| VK_KHR_get_display_properties2         | -        |
+| VK_KHR_get_memory_requirements2        | NOT DONE |
+| VK_KHR_get_physical_device_properties2 | NOT DONE |
+| VK_KHR_get_surface_capabilities2       | NOT DONE |
+| VK_KHR_incremental_present             | -        |
+| VK_KHR_maintenance1                    | NOT DONE |
+| VK_KHR_maintenance2                    | -        |
+| VK_KHX_multiview                       | -        |
+| VK_KHR_protected_memory                | -        |
+| VK_KHR_push_descriptor                 | NOT DONE |
+| VK_KHR_relaxed_block_layout            | -        |
+| VK_KHR_sampler_mirror_clamp_to_edge    | -        |
+| VK_KHR_sampler_ycbcr_conversion        | ?        |
+| VK_KHR_shader_draw_parameters          | -        |
+| VK_KHR_shared_presentable_image        | NOT DONE |
+| VK_KHR_storage_buffer_storage_class    | -        |
+| VK_KHX_subgroup                        | -        |
+| VK_KHR_variable_pointers               | -        |
+| VK_KHR_win32_keyed_mutex               | -        |
