@@ -100,7 +100,7 @@ As you complete an item, please copy / paste it into the SUPPORTED FEATURES sect
 | VK_KHR_get_display_properties2         | -        |
 | VK_KHR_get_memory_requirements2        | DONE     |
 | VK_KHR_get_physical_device_properties2 | DONE     |
-| VK_KHR_get_surface_capabilities2       | NOT DONE |
+| VK_KHR_get_surface_capabilities2       | DONE     |
 | VK_KHR_incremental_present             | -        |
 | VK_KHR_maintenance1                    | NOT DONE |
 | VK_KHR_maintenance2                    | -        |
