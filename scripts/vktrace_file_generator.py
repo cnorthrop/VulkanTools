@@ -27,15 +27,6 @@ from collections import namedtuple
 # TODO: Finish generated file conversion, reenable these extensions
 # THESE FUNCTIONS WILL BE ADDED IN AFTER THE SCRIPT CONVERSION EFFORT IS COMPLETE
 temporary_script_porting_exclusions = [
-                                       # VK_KHR_get_physical_device_properties2
-                                       'vkGetPhysicalDeviceFeatures2KHR',
-                                       'vkGetPhysicalDeviceProperties2KHR',
-                                       'vkGetPhysicalDeviceFormatProperties2KHR',
-                                       'vkGetPhysicalDeviceImageFormatProperties2KHR',
-                                       'vkGetPhysicalDeviceQueueFamilyProperties2KHR',
-                                       'vkGetPhysicalDeviceMemoryProperties2KHR',
-                                       'vkGetPhysicalDeviceSparseImageFormatProperties2KHR',
-
                                        # VK_KHR_maintenance1
                                        'vkTrimCommandPoolKHR',
 
@@ -2342,7 +2333,8 @@ class VkTraceFileOutputGenerator(OutputGenerator):
                         'VK_KHR_xcb_surface',
                         'VK_KHR_wayland_surface',
                         'VK_EXT_debug_report',
-                        'VK_KHR_descriptor_update_template']
+                        'VK_KHR_descriptor_update_template',
+                        'VK_KHR_get_physical_device_properties2']
         for func in manually_written_hooked_funcs:
             if (func not in protoFuncs) and (func not in wsi_platform_manual_funcs):
                 sys.exit("Entry '%s' in manually_written_hooked_funcs list is not in the vulkan function prototypes" % func)
