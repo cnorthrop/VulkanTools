@@ -98,7 +98,7 @@ As you complete an item, please copy / paste it into the SUPPORTED FEATURES sect
 | VK_KHR_external_semaphore_fd           | NOT DONE |
 | VK_KHR_external_semaphore_win32        | NOT DONE |
 | VK_KHR_get_display_properties2         | -        |
-| VK_KHR_get_memory_requirements2        | NOT DONE |
+| VK_KHR_get_memory_requirements2        | DONE     |
 | VK_KHR_get_physical_device_properties2 | DONE     |
 | VK_KHR_get_surface_capabilities2       | NOT DONE |
 | VK_KHR_incremental_present             | -        |
