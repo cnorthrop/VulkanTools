@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#set -vex
+#set -v
 
 default_target_abi=$(adb shell getprop ro.product.cpu.abi)
 
@@ -120,33 +120,44 @@ fi
 #
 
 # We want to halt on errors here
-set -e
+#set -e
+hostJSON=../tests/devsim_test1.json
+targetJSON=/sdcard/Android/devsim_test1.json
+outJSON=/data/tmp/device_simulation_layer_test_1.json
+resultJSON=device_simulation_layer_test_1.json
+goldJSON=../tests/devsim_test1_gold.json
 
 # Wake up the device
 adb $serialFlag shell input keyevent "KEYCODE_MENU"
 adb $serialFlag shell input keyevent "KEYCODE_HOME"
 
 # possibly turn json file into a parameter
-adb $serialFlag shell rm -f /sdcard/Android/tiny1.json
 
 # remove any other files added during the run
 #rm -f $package.$frame.vktrace.ppm
 
+# Push the exe
+adb $serialFlag shell rm -r /data/tmp/vkjson_info
+adb $serialFlag shell mkdir -p /data/tmp
+adb $serialFlag push obj/local/$target_abi/vkjson_info /data/tmp/
+
 # Push the layer
-adb $serialFlag shell mkdir -p /data/local/debug/vulkan/
+adb $serialFlag shell rm -r /data/local/debug/vulkan
+adb $serialFlag shell mkdir -p /data/local/debug/vulkan
 adb $serialFlag push libs/$target_abi/libVkLayer_device_simulation.so /data/local/debug/vulkan/
 
 # device simulation parameters, ported from devsim_layer_test.sh
-adb $serialFlag push ../tests/devsim_test1.json /sdcard/Android/devsim_test1.json
-adb $serialFlag shell setprop debug.vulkan.devsim.filepath /sdcard/Android/tiny1.json
+adb $serialFlag push $hostJSON $targetJSON
+adb $serialFlag shell setprop debug.vulkan.devsim.filepath $targetJSON
 #adb $serialFlag shell setprop debug.vulkan.devsim.debugenable 1
 #adb $serialFlag shell setprop debug.vulkan.devsim.exitonerror 1
 
 
 adb $serialFlag shell setprop debug.vulkan.layer.1 VK_LAYER_LUNARG_device_simulation
 
-adb $serialFlag shell cmd gpu vkjson #&> devsim.output
-
+#adb $serialFlag shell cmd gpu vkjson #&> devsim.output
+adb $serialFlag shell /data/tmp/vkjson_info
+adb $serialFlag pull $outJSON $resultJSON
 
 # clean up
 adb $serialFlag shell setprop debug.vulkan.layer.1 '""'
@@ -167,10 +178,11 @@ else
 fi
 
 # compare vkjson output against gold for the #lines of input
-NUM_LINES=$(cut -f1 -d' ' <(wc -l devsim.output))
-diff <(head -n ${NUM_LINES} ../tests/devsim_test1_gold.json) <(head -n ${NUM_LINES} devsim.output) >/dev/null
+NUM_LINES=$(cut -f1 -d' ' <(wc -l $hostJSON))
+echo $NUM_LINES
+diff <(head -n ${NUM_LINES} $goldJSON) <(head -n ${NUM_LINES} $resultJSON) >/dev/null
 RES=$?
-rm ${FILENAME_01_OUT}
+#rm ${FILENAME_01_OUT}
 
 if [ "$RES" -eq 0 ] ; then
    printf "$GREEN[  PASSED  ]$NC ${PGM}\n"

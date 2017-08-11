@@ -1,5 +1,4 @@
 {
-	"$schema":	"https://schema.khronos.org/vulkan/devsim_1_0_0.json#",
 	"VkPhysicalDeviceProperties":	{
 		"apiVersion":	4194304,
 		"driverVersion":	1234,

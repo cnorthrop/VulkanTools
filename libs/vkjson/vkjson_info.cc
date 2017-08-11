@@ -128,7 +128,11 @@ bool Dump(const VkJsonInstance& instance, const Options& options) {
   std::string output_file;
   if (options.output_file.empty()) {
     assert(out_device);
+#if defined(ANDROID)
+    output_file.assign("/data/tmp/" + std::string(out_device->properties.deviceName));
+#else
     output_file.assign(out_device->properties.deviceName);
+#endif
     output_file.append(".json");
   } else {
     output_file = options.output_file;
