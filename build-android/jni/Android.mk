@@ -335,12 +335,12 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := vkjson
 LOCAL_SRC_FILES += $(SRC_DIR)/libs/vkjson/vkjson.cc \
                 += $(SRC_DIR)/libs/vkjson/vkjson_instance.cc \
+		+= $(SRC_DIR)/common/vulkan_wrapper.cpp \
                 += $(SRC_DIR)/loader/cJSON.c
 LOCAL_C_INCLUDES += $(SRC_DIR)/include \
                  += $(SRC_DIR)/loader
-                    
 
-#LOCAL_CPPFLAGS += -DVK_USE_PLATFORM_ANDROID_KHR -fvisibility=hidden -DVALIDATION_APK --include=$(SRC_DIR)/common/vulkan_wrapper.h
+LOCAL_CPPFLAGS += -DVK_USE_PLATFORM_ANDROID_KHR -fvisibility=hidden --include=$(SRC_DIR)/common/vulkan_wrapper.h
 include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
