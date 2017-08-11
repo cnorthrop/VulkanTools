@@ -78,8 +78,8 @@
 lunarg_api_dump.output_format = Text
 lunarg_api_dump.detailed = TRUE
 lunarg_api_dump.no_addr = FALSE
-lunarg_api_dump.file = FALSE
-lunarg_api_dump.log_filename = vk_apidump.txt
+lunarg_api_dump.file = TRUE
+lunarg_api_dump.log_filename = /sdcard/Android/vk_apidump.txt
 lunarg_api_dump.flush = TRUE
 lunarg_api_dump.indent_size = 4
 lunarg_api_dump.show_types = TRUE

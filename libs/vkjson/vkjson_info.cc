@@ -18,7 +18,10 @@
 // limitations under the License.
 ///////////////////////////////////////////////////////////////////////////////
 
+#ifndef VK_PROTOTYPES
 #define VK_PROTOTYPES
+#endif
+
 #include "vkjson.h"
 
 #include <assert.h>
@@ -95,6 +98,8 @@ bool ParseOptions(int argc, char* argv[], Options* options) {
 }
 
 bool Dump(const VkJsonInstance& instance, const Options& options) {
+  printf("In Dump\n");
+  fflush(stdout);
   const VkJsonDevice* out_device = nullptr;
   if (options.device_index != unsignedNegOne) {
     if (static_cast<uint32_t>(options.device_index) >=
@@ -117,6 +122,8 @@ bool Dump(const VkJsonInstance& instance, const Options& options) {
       return false;
     }
   }
+  printf("Beyond optiosn check\n");
+  fflush(stdout);
 
   std::string output_file;
   if (options.output_file.empty()) {
@@ -153,10 +160,21 @@ bool Dump(const VkJsonInstance& instance, const Options& options) {
 }
 
 int main(int argc, char* argv[]) {
+  printf("Inside main\n");
+  fflush(stdout);
+#ifdef ANDROID
+    int vulkanSupport = InitVulkan();
+    if (vulkanSupport == 0)
+        return 1;
+  printf("Vulkan inited\n");
+  fflush(stdout);
+#endif
   Options options;
   if (!ParseOptions(argc, argv, &options))
     return 1;
 
+  printf("parsed options\n");
+  fflush(stdout);
   VkJsonInstance instance = VkJsonGetInstance();
   if (options.instance || options.device_index != unsignedNegOne ||
       !options.device_name.empty()) {
